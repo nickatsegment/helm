@@ -241,7 +241,7 @@ func (t *templateCmd) run(cmd *cobra.Command, args []string) error {
 			if whitespaceRegex.MatchString(data) {
 				continue
 			}
-			err = writeToFile(t.outputDir, m.Name, data)
+			err = writeToFile(strings.Join([]string{t.outputDir, t.releaseName}, string(filepath.Separator)), m.Name, data)
 			if err != nil {
 				return err
 			}
